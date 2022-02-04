@@ -235,6 +235,8 @@ import {HTTPRequest} from '../streaming/vo/metrics/HTTPRequest';
  * This value should be less than the manifest duration by a couple of segment durations to avoid playback issues.
  *
  * If set, this parameter will take precedence over setLiveDelayFragmentCount and manifest info.
+ * 
+ * Note: If a ServiceDescription element is used to set LiveDelay and LiveCatchupSettings then liveDelay is equal to Latency@target / 1000.
  * @property {boolean} [useSuggestedPresentationDelay=true]
  * Set to true if you would like to overwrite the default live delay and honor the SuggestedPresentationDelay attribute in by the manifest.
  * @property {boolean} [applyServiceDescription=true]
@@ -442,6 +444,8 @@ import {HTTPRequest} from '../streaming/vo/metrics/HTTPRequest';
  * LowLatencyMinDrift should be provided in seconds, and it uses values between 0.0 and 0.5.
  *
  * Note: Catch-up mechanism is only applied when playing low latency live streams.
+ * 
+ * Note: When LiveCatchupSettings are applied from a ServiceDescription element, minDrift is set to 0.5 (seconds).
  * @property {number} [maxDrift=12]
  * Use this method to set the maximum latency deviation allowed before dash.js to do a seeking to live position.
  *
@@ -452,6 +456,8 @@ import {HTTPRequest} from '../streaming/vo/metrics/HTTPRequest';
  * If 0, then seeking operations won't be used for fixing latency deviations.
  *
  * Note: Catch-up mechanism is only applied when playing low latency live streams.
+ * 
+ * Note: When LiveCatchupSettings are applied from a ServiceDescription element, maxDrift is set to (Latency@max - Latency@target) / 1000, [provided Latency@max >= Latency@target].
  * @property {number} [playbackRate=0.5]
  * Use this parameter to set the maximum catch up rate, as a percentage, for low latency live streams.
  *

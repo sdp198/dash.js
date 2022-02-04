@@ -309,8 +309,8 @@ function PlaybackController() {
                             liveDelay: llsd.latency.target / 1000,
                         },
                         liveCatchup: {
-                            minDrift: (llsd.latency.target + 500) / 1000,
-                            maxDrift: llsd.latency.max > llsd.latency.target ? (llsd.latency.max - llsd.latency.target + 500) / 1000 : undefined
+                            minDrift:  500 / 1000,
+                            maxDrift: llsd.latency.max > llsd.latency.target ? (llsd.latency.max - llsd.latency.target) / 1000 : undefined
                         }
                     }
                 });
