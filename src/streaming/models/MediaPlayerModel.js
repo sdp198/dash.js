@@ -176,6 +176,26 @@ function MediaPlayerModel() {
         }
     }
 
+    function getLiveEdgeLatencyThreshold() {
+        try {
+            const liveEdgeLatencyThreshold = settings.get().streaming.liveCatchup.liveEdgelatencyThreshold;
+            
+            if (isNaN(liveEdgeLatencyThreshold) || liveEdgeLatencyThreshold == null) {
+                const liveDelay = getLiveDelay(); // default to '3' if unset
+                const maxDrift = settings.get().streaming.liveCatchup.maxDrift;
+                if (isNaN(liveDelay) || isNaN(maxDrift)) {
+                    return NaN;
+                } else {
+                    return (liveDelay + maxDrift);
+                }
+            }
+
+            return liveEdgeLatencyThreshold;
+        } catch (e) {
+            return NaN;
+        }
+    }
+
     function addUTCTimingSource(schemeIdUri, value) {
         removeUTCTimingSource(schemeIdUri, value); //check if it already exists and remove if so.
         let vo = new UTCTiming();
@@ -242,6 +262,7 @@ function MediaPlayerModel() {
         getRetryIntervalsForType,
         getLiveDelay,
         getLiveCatchupLatencyThreshold,
+        getLiveEdgeLatencyThreshold,
         addUTCTimingSource,
         removeUTCTimingSource,
         getUTCTimingSources,

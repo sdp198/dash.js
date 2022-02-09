@@ -135,6 +135,7 @@ import {HTTPRequest} from '../streaming/vo/metrics/HTTPRequest';
  *                maxDrift: 12,
  *                playbackRate: 0.5,
  *                latencyThreshold: 60,
+ *                liveEdgeLatencyThreshold: NaN,
  *                playbackBufferMin: 0.5,
  *                enabled: false,
  *                mode: Constants.LIVE_CATCHUP_MODE_DEFAULT
@@ -227,7 +228,7 @@ import {HTTPRequest} from '../streaming/vo/metrics/HTTPRequest';
  * The detected segment duration will be multiplied by this value to define a time in seconds to delay a live stream from the live edge.
  *
  * Lowering this value will lower latency but may decrease the player's ability to build a stable buffer.
- * @property {number} [liveDelay]
+ * @property {number} [liveDelay=NaN]
  * Equivalent in seconds of setLiveDelayFragmentCount.
  *
  * Lowering this value will lower latency but may decrease the player's ability to build a stable buffer.
@@ -473,7 +474,14 @@ import {HTTPRequest} from '../streaming/vo/metrics/HTTPRequest';
  *
  * The maximum live delay is either specified in the manifest as part of a ServiceDescriptor or calculated the following:
  * maximumLiveDelay = targetDelay + liveCatchupMinDrift.
- *
+ * @property {number} [liveEdgeLatencyThreshold=NaN]
+ * Use this property to specify an alternative threshold for the player to determine wether a user has seeked back to the live edge.
+ * 
+ * When a user seeks away from the live edge, or pauses, catch up mechanisms are disengaged.
+ * 
+ * However when a user seeks back towards the live edge, if after the seek the measured live latency is less than the liveEdgeLatencyThreshold then play back is considered to be close to the live edge and catchup mechanisms are re-engaged.
+ * 
+ * If not set this value will default to liveDelay + maxDrift, as this threshold will not cause an immediate seek when re-engaging catchup mechanisms.
  * @property {number} [playbackBufferMin=NaN]
  * Use this parameter to specify the minimum buffer which is used for LoL+ based playback rate reduction.
  *
@@ -831,6 +839,7 @@ function Settings() {
                 maxDrift: 12,
                 playbackRate: 0.5,
                 latencyThreshold: 60,
+                liveEdgeLatencyThreshold: NaN,
                 playbackBufferMin: 0.5,
                 enabled: false,
                 mode: Constants.LIVE_CATCHUP_MODE_DEFAULT
