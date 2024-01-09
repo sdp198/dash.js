@@ -425,25 +425,25 @@
                     "provider": "bbc"
                 },
                 {
-                    "name": "On-demand Testcard - WOFF Font Download from supplemental property descriptor with absolute URL",
+                    "name": "On-demand Testcard - WOFF Font Download signalled with supplemental property descriptor",
                     "url": "https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-ctv-stereo-en-sfdt-woff.mpd",
                     "moreInfo": "https://rdmedia.bbc.co.uk/testcard/vod/#feature-tests-font-downloads-for-subtitles",
                     "provider": "bbc"
                 },
                 {
-                    "name": "On-demand Testcard - WOFF Font Download from essential property descriptor with absolute URL",
+                    "name": "On-demand Testcard - WOFF Font Download signalled with essential property descriptor",
                     "url": "https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-ctv-stereo-en-efdt-woff.mpd",
                     "moreInfo": "https://rdmedia.bbc.co.uk/testcard/vod/#feature-tests-font-downloads-for-subtitles",
                     "provider": "bbc"
                 },
                 {
-                    "name": "Live Testcard - WOFF Font Download from supplemental property descriptor with absolute URL",
+                    "name": "Live Testcard - WOFF Font Download signalled with supplemental property descriptor",
                     "url": "https://rdmedia.bbc.co.uk/testcard/simulcast/manifests/avc-ctv-stereo-en-sfdt-woff.mpd",
                     "moreInfo": "https://rdmedia.bbc.co.uk/testcard/simulcast/#feature-tests-font-downloads-for-subtitles",
                     "provider": "bbc"
                 },
                 {
-                    "name": "Live Testcard - WOFF Font Download from essential property descriptor with absolute URL",
+                    "name": "Live Testcard - WOFF Font Download signalled with essential property descriptor",
                     "url": "https://rdmedia.bbc.co.uk/testcard/simulcast/manifests/avc-ctv-stereo-en-efdt-woff.mpd",
                     "moreInfo": "https://rdmedia.bbc.co.uk/testcard/simulcast/#feature-tests-font-downloads-for-subtitles",
                     "provider": "bbc"
